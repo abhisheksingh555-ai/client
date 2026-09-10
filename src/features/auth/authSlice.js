@@ -179,6 +179,10 @@ const authSlice = createSlice({
             .addCase(logoutUser.rejected, (state, action) => {
                 state.loading = false;
 
+                state.user = null;
+                state.isAuthenticated = false;
+                state.initialized = true;
+
                 state.error =
                     action.payload || "Logout failed";
             });

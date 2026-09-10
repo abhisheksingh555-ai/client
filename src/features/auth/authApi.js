@@ -27,9 +27,11 @@ export const getMeApi = async () => {
 };
 
 export const logoutApi = async () => {
-  const response = await apiClient.post("/auth/logout");
+  try {
+    const response = await apiClient.post("/auth/logout");
 
-  storage.remove(ACCESS_TOKEN_KEY);
-
-  return response.data;
+    return response.data;
+  } finally {
+    storage.remove(ACCESS_TOKEN_KEY);
+  }
 };

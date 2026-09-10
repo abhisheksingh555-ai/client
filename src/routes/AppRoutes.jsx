@@ -13,6 +13,7 @@ import Register from "../components/Register";
 
 import DashboardLayout from "../components/layout/DashboardLayout";
 import Dashboard from "../components/dashboard/Dashboard";
+import Profile from "../components/Profile";
 
 const AppRoutes = () => {
   return (
@@ -47,6 +48,11 @@ const AppRoutes = () => {
             <Route
               path="/dashboard"
               element={<Dashboard />}
+            />
+
+            <Route
+              path="/me"
+              element={<Profile />}
             />
 
           </Route>

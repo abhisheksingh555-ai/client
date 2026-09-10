@@ -2,15 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import {
   LayoutDashboard,
-  Users,
-  Building2,
-  UserPlus,
-  BriefcaseBusiness,
-  CheckSquare,
-  Activity,
-  BarChart3,
-  Settings,
-  ShieldCheck,
+  UserCircle,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -23,52 +15,9 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       icon: LayoutDashboard,
     },
     {
-      label: "Contacts",
-      path: "/contacts",
-      icon: Users,
-    },
-    {
-      label: "Companies",
-      path: "/companies",
-      icon: Building2,
-    },
-    {
-      label: "Leads",
-      path: "/leads",
-      icon: UserPlus,
-    },
-    {
-      label: "Deals",
-      path: "/deals",
-      icon: BriefcaseBusiness,
-    },
-    {
-      label: "Tasks",
-      path: "/tasks",
-      icon: CheckSquare,
-    },
-    {
-      label: "Activities",
-      path: "/activities",
-      icon: Activity,
-    },
-    {
-      label: "Reports",
-      path: "/reports",
-      icon: BarChart3,
-    },
-  ];
-
-  const systemItems = [
-    {
-      label: "Settings",
-      path: "/settings",
-      icon: Settings,
-    },
-    {
-      label: "Security",
-      path: "/security",
-      icon: ShieldCheck,
+      label: "Profile",
+      path: "/me",
+      icon: UserCircle,
     },
   ];
 
@@ -83,18 +32,18 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
         {!collapsed && (
           <div className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
-              <Users size={20} />
+              <LayoutDashboard size={20} />
             </div>
 
             <span className="text-lg font-bold text-gray-900">
-              RelationCRM
+              Portfolio
             </span>
           </div>
         )}
 
         {collapsed && (
           <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
-            <Users size={20} />
+            <LayoutDashboard size={20} />
           </div>
         )}
       </div>
@@ -106,7 +55,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
             collapsed ? "hidden" : "block"
           }`}
         >
-          Main Menu
+          Workspace
         </p>
 
         <div className="space-y-1">
@@ -134,38 +83,6 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           })}
         </div>
 
-        <p
-          className={`mb-3 mt-8 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400 ${
-            collapsed ? "hidden" : "block"
-          }`}
-        >
-          System
-        </p>
-
-        <div className="space-y-1">
-          {systemItems.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                title={collapsed ? item.label : ""}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
-                    isActive
-                      ? "bg-blue-50 text-blue-600"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                  } ${collapsed ? "justify-center" : ""}`
-                }
-              >
-                <Icon size={19} />
-
-                {!collapsed && <span>{item.label}</span>}
-              </NavLink>
-            );
-          })}
-        </div>
       </nav>
 
       {/* Collapse Button */}
